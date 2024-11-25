@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 
 # Load the pre-trained model
-model = r'model3.h5'  # Path harus sesuai
+model = load_model(r'model3.h5')  # Path harus sesuai
 class_names = ['Matang', 'Mentah']
 
 # Function to preprocess and classify image
