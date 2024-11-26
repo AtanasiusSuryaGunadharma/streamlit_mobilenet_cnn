@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 
 # Load the pre-trained model
-model = load_model(r'model_mobilenet.h5')  
+model = load_model(r'model_mobilenet.h5')  #a
 class_names = ['Matang', 'Mentah']
 
 # Function to preprocess and classify image
