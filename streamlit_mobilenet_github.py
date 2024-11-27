@@ -120,7 +120,7 @@ natal_audio = """
 </div>
 """
 
-# Tambahkan elemen HTML ke Streamlit
+# Tambahkan elemen HTML ke Streamlitt
 st.markdown(natal_audio, unsafe_allow_html=True)
 
 # Streamlit UI
