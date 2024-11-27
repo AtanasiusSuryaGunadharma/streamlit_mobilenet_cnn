@@ -126,9 +126,6 @@ try:
 except FileNotFoundError:
     st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
 
-# Streamlit UI
-st.title("🎄 Prediksi Kematangan Buah Naga 🎅")
-
 # Quotes Natal dengan tampilan menarik
 quotes_html = """
 <div style="background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;">
@@ -139,4 +136,68 @@ quotes_html = """
         "Natal bukanlah tentang hadiah yang kita terima, tetapi tentang cinta yang kita bagi.
         Dalam setiap senyum dan kebaikan yang kita berikan, di situlah makna Natal sesungguhnya."
     </p>
-    <p style="color: #4B0082; font-size: 18px; font-family: 'Arial',
+    <p style="color: #4B0082; font-size: 18px; font-family: 'Arial', sans-serif; margin-top: 10px;">
+        "Semoga damai dan sukacita Natal memenuhi hati Anda dan keluarga Anda di hari yang indah ini."
+    </p>
+</div>
+"""
+
+# Display quotes on the main page
+st.markdown(quotes_html, unsafe_allow_html=True)
+
+# Tambahkan copyright di bagian bawah
+copyright_html = """
+<div style="text-align: center; margin-top: 40px; font-size: 14px; color: #FFF; opacity: 0.8;">
+    © 2024 Atanasius Surya Gunadharma. All Rights Reserved.
+</div>
+"""
+st.markdown(copyright_html, unsafe_allow_html=True)
+
+
+# Streamlit UI
+st.title("🎄 Prediksi Kematangan Buah Naga 🎅")
+
+# Upload multiple files in the main page
+uploaded_files = st.file_uploader("Unggah Gambar (Beberapa diperbolehkan)", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
+
+# Sidebar for prediction button and results
+if st.sidebar.button("Prediksi"):
+    if uploaded_files:
+        st.sidebar.write("### 🎁 Hasil Prediksi")
+        for uploaded_file in uploaded_files:
+            with open(uploaded_file.name, "wb") as f:
+                f.write(uploaded_file.getbuffer())
+
+            # Perform prediction
+            label, confidence = classify_image(uploaded_file.name)
+            
+            if label != "Error":
+                # Define colors for the bar and label
+                primary_color = "#00FF00"  # Green for "Matang"
+                secondary_color = "#FF0000"  # Red for "Mentah"
+                label_color = primary_color if label == "Matang" else secondary_color
+                
+                # Display prediction results
+                st.sidebar.write(f"**Nama File:** {uploaded_file.name}")
+                st.sidebar.markdown(f"<h4 style='color: {label_color};'>Prediksi: {label}</h4>", unsafe_allow_html=True)
+                
+                # Display confidence scores
+                st.sidebar.write("**Confidence:**")
+                for i, class_name in enumerate(class_names):
+                    st.sidebar.write(f"- {class_name}: {confidence[i] * 100:.2f}%")
+                
+                # Display custom progress bar
+                custom_progress_bar(confidence, primary_color, secondary_color)
+                
+                st.sidebar.write("---")
+            else:
+                st.sidebar.error(f"Kesalahan saat memproses gambar {uploaded_file.name}: {confidence}")
+    else:
+        st.sidebar.error("Silakan unggah setidaknya satu gambar untuk diprediksi.")
+
+# Preview images in the main page
+if uploaded_files:
+    st.write("### Preview Gambar")
+    for uploaded_file in uploaded_files:
+        image = Image.open(uploaded_file)
+        st.image(image, caption=f"{uploaded_file.name}", use_column_width=True)
