@@ -46,12 +46,22 @@ def custom_progress_bar(confidence, color1, color2):
 # Add custom Christmas-themed background with snow animation
 christmas_background = """
 <style>
-body {
+/* Set full-page background */
+[data-testid="stAppViewContainer"] {
     background: linear-gradient(to bottom, #FF0000, #00FF00); /* Red to Green */
+    background-size: cover;
+    background-attachment: fixed;
     color: white; /* Text color */
     font-family: Arial, sans-serif;
 }
 
+/* Hide default Streamlit styling for a cleaner look */
+[data-testid="stSidebar"] {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+/* Create snowflake animation */
 .snowflake {
     color: white;
     font-size: 1.5em;
@@ -59,6 +69,7 @@ body {
     top: -10%;
     animation: snow 10s linear infinite;
     opacity: 0.8;
+    z-index: 10;
 }
 
 @keyframes snow {
