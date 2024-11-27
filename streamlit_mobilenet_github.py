@@ -127,14 +127,18 @@ except FileNotFoundError:
     st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
 
 
-# Quotes Natal dengan tampilan menarik
-st.markdown("""
-## ✨ Selamat Natal! ✨
-"Natal bukanlah tentang hadiah yang kita terima, tetapi tentang cinta yang kita bagi.
-Dalam setiap senyum dan kebaikan yang kita berikan, di situlah makna Natal sesungguhnya."
+simple_quotes_html = """
+<div style="background: #FFF; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;">
+    <h2 style="color: #8B0000; font-family: 'Georgia', serif;">
+        ✨ Selamat Natal! ✨
+    </h2>
+    <p style="color: #4B0082; font-size: 18px; font-family: 'Arial', sans-serif;">
+        "Natal bukanlah tentang hadiah yang kita terima, tetapi tentang cinta yang kita bagi."
+    </p>
+</div>
+"""
+st.markdown(simple_quotes_html, unsafe_allow_html=True)
 
-"Semoga damai dan sukacita Natal memenuhi hati Anda dan keluarga Anda di hari yang indah ini."
-""")
 
 # Tambahkan copyright di bagian bawah
 copyright_html = """
