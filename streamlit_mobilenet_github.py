@@ -3,6 +3,7 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.models import load_model
 from PIL import Image
+import base64
 
 # Load the pre-trained model
 model = load_model(r'model_mobilenet.h5')  # Update with your model path
