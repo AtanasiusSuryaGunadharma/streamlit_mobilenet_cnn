@@ -3,6 +3,8 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.models import load_model
 from PIL import Image
+from datetime import datetime, timedelta
+import time
 import base64
 
 # Load the pre-trained model
@@ -43,6 +45,22 @@ def custom_progress_bar(confidence, color1, color2):
     </div>
     """
     st.sidebar.markdown(progress_html, unsafe_allow_html=True)
+
+def get_christmas_countdown():
+    today = datetime.now()
+    christmas_date = datetime(today.year, 12, 25)
+    
+    # Jika sudah melewati Natal tahun ini, hitung mundur ke Natal tahun depan
+    if today > christmas_date:
+        christmas_date = datetime(today.year + 1, 12, 25)
+    
+    delta = christmas_date - today
+    
+    days = delta.days
+    hours, remainder = divmod(delta.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    
+    return days, hours, minutes, seconds
 
 # Add custom Christmas-themed background with snow animation
 christmas_background = """
@@ -128,31 +146,44 @@ except FileNotFoundError:
 
 # Tambahkan copyright di bagian bawah
 copyright_html = """
-<div style="text-align: center; margin-top: 40px; font-size: 14px; color: #FFF; opacity: 0.8;">
+<div style="text-align: center; margin-top: 10px; font-size: 14px; color: #FFF; opacity: 0.8;">
     © 2024 Atanasius Surya Gunadharma. All Rights Reserved.
 </div>
 """
 st.markdown(copyright_html, unsafe_allow_html=True)
 
-# Streamlit UI
-st.title("🎄 Prediksi Kematangan Buah Naga -  XXXX 🎅") # 4 digit npm
 
-st.write("""
-<div style="background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;">
-    <h2 style="color: #8B0000; font-family: 'Georgia', serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-        ✨ Selamat Natal! ✨
-    </h2>
-    <p style="color: #4B0082; font-size: 18px; font-family: 'Arial', sans-serif;">
-        "Natal bukanlah tentang hadiah yang kita terima, tetapi tentang cinta yang kita bagi."
-    </p>
-    <p style="color: #4B0082; font-size: 18px; font-family: 'Arial', sans-serif; margin-top: 10px;">
-        "Semoga damai dan sukacita Natal memenuhi hati Anda dan keluarga Anda di hari yang indah ini."
-    </p>
+title_html = """
+<div style="text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); font-size: 50px; font-weight: bold;">
+    🎄 Prediksi Kematangan Buah Naga - XXXX 🎅
 </div>
-""", unsafe_allow_html=True)
+"""
+st.markdown(title_html, unsafe_allow_html=True)
 
 # Upload multiple files in the main page
 uploaded_files = st.file_uploader("Unggah Gambar (Beberapa diperbolehkan)", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
+
+# Mengambil countdown ke Natal
+days, hours, minutes, seconds = get_christmas_countdown()
+
+# Quotes Natal dengan tampilan menarik
+quotes_html = f"""
+<div style="background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;">
+    <h2 style="color: #8B0000; font-family: 'Georgia', serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+        ✨ Countdown Christmas! ✨
+    </h2>
+    <p style="color: #4B0082; font-size: 24px; font-weight: bold; font-family: 'Arial', sans-serif;">
+        {days} Hari {hours} Jam {minutes} Menit
+    </p>
+    <p style="color: #4B0082; font-size: 16px; font-family: 'Arial', sans-serif;">
+        "Natal bukanlah tentang hadiah yang kita terima, tetapi tentang cinta yang kita bagi.
+        Dalam setiap senyum dan kebaikan yang kita berikan, di situlah makna Natal sesungguhnya."
+    </p>
+</div>
+"""
+
+# Display quotes on the main page
+st.markdown(quotes_html, unsafe_allow_html=True)
 
 # Sidebar for prediction button and results
 if st.sidebar.button("Prediksi"):
