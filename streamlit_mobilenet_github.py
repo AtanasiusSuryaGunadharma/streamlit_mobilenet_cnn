@@ -128,15 +128,15 @@ except FileNotFoundError:
 
 # Quotes Natal dengan tampilan menarik
 quotes_html = """
-<div style="background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;">
-    <h2 style="color: #8B0000; font-family: 'Georgia', serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+<div style="background: #fff; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);">
+    <h2 style="color: #8B0000; font-family: 'Georgia', serif;">
         ✨ Selamat Natal! ✨
     </h2>
-    <p style="color: #4B0082; font-size: 18px; font-family: 'Arial', sans-serif;">
+    <p style="color: #4B0082; font-size: 16px; font-family: 'Arial', sans-serif;">
         "Natal bukanlah tentang hadiah yang kita terima, tetapi tentang cinta yang kita bagi.
         Dalam setiap senyum dan kebaikan yang kita berikan, di situlah makna Natal sesungguhnya."
     </p>
-    <p style="color: #4B0082; font-size: 18px; font-family: 'Arial', sans-serif; margin-top: 10px;">
+    <p style="color: #4B0082; font-size: 16px; font-family: 'Arial', sans-serif; margin-top: 10px;">
         "Semoga damai dan sukacita Natal memenuhi hati Anda dan keluarga Anda di hari yang indah ini."
     </p>
 </div>
