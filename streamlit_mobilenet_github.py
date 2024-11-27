@@ -126,19 +126,19 @@ try:
 except FileNotFoundError:
     st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
 
-
-simple_quotes_html = """
-<div style="background: #FFF; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;">
-    <h2 style="color: #8B0000; font-family: 'Georgia', serif;">
+st.write("""
+<div style="background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;">
+    <h2 style="color: #8B0000; font-family: 'Georgia', serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
         ✨ Selamat Natal! ✨
     </h2>
     <p style="color: #4B0082; font-size: 18px; font-family: 'Arial', sans-serif;">
         "Natal bukanlah tentang hadiah yang kita terima, tetapi tentang cinta yang kita bagi."
     </p>
+    <p style="color: #4B0082; font-size: 18px; font-family: 'Arial', sans-serif; margin-top: 10px;">
+        "Semoga damai dan sukacita Natal memenuhi hati Anda dan keluarga Anda di hari yang indah ini."
+    </p>
 </div>
-"""
-st.markdown(simple_quotes_html, unsafe_allow_html=True)
-
+""", unsafe_allow_html=True)
 
 # Tambahkan copyright di bagian bawah
 copyright_html = """
