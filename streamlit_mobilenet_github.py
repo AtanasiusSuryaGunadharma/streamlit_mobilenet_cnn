@@ -115,7 +115,7 @@ st.markdown(christmas_background, unsafe_allow_html=True)
 natal_audio = """
 <div style="position: fixed; bottom: 10px; left: 10px;">
     <audio controls autoplay loop>
-        <source src=r"lagu_natal.mpeg" type="audio/mpeg">
+        <source src=r"natal_lagu.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 </div>
