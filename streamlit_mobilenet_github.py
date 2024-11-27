@@ -111,33 +111,6 @@ h1, h2, h3, h4, h5, h6, p {
 # Display the background animation and snowflakes
 st.markdown(christmas_background, unsafe_allow_html=True)
 
-# Quotes Natal dengan tampilan menarik
-quotes_html = """
-<div style="background: #fff; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);">
-    <h2 style="color: #8B0000; font-family: 'Georgia', serif;">
-        ✨ Selamat Natal! ✨
-    </h2>
-    <p style="color: #4B0082; font-size: 16px; font-family: 'Arial', sans-serif;">
-        "Natal bukanlah tentang hadiah yang kita terima, tetapi tentang cinta yang kita bagi.
-        Dalam setiap senyum dan kebaikan yang kita berikan, di situlah makna Natal sesungguhnya."
-    </p>
-    <p style="color: #4B0082; font-size: 16px; font-family: 'Arial', sans-serif; margin-top: 10px;">
-        "Semoga damai dan sukacita Natal memenuhi hati Anda dan keluarga Anda di hari yang indah ini."
-    </p>
-</div>
-"""
-
-# Display quotes on the main page
-st.markdown(quotes_html, unsafe_allow_html=True)
-
-# Tambahkan copyright di bagian bawah
-copyright_html = """
-<div style="text-align: center; margin-top: 40px; font-size: 14px; color: #FFF; opacity: 0.8;">
-    © 2024 Atanasius Surya Gunadharma. All Rights Reserved.
-</div>
-"""
-st.markdown(copyright_html, unsafe_allow_html=True)
-
 # Menambahkan audio autoplay menggunakan HTML
 try:
     with open(r"natal_lagu.mp3", "rb") as audio_file:
@@ -153,6 +126,23 @@ try:
 except FileNotFoundError:
     st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
 
+
+# Quotes Natal dengan tampilan menarik
+st.markdown("""
+## ✨ Selamat Natal! ✨
+"Natal bukanlah tentang hadiah yang kita terima, tetapi tentang cinta yang kita bagi.
+Dalam setiap senyum dan kebaikan yang kita berikan, di situlah makna Natal sesungguhnya."
+
+"Semoga damai dan sukacita Natal memenuhi hati Anda dan keluarga Anda di hari yang indah ini."
+""")
+
+# Tambahkan copyright di bagian bawah
+copyright_html = """
+<div style="text-align: center; margin-top: 40px; font-size: 14px; color: #FFF; opacity: 0.8;">
+    © 2024 Atanasius Surya Gunadharma. All Rights Reserved.
+</div>
+"""
+st.markdown(copyright_html, unsafe_allow_html=True)
 
 # Streamlit UI
 st.title("🎄 Prediksi Kematangan Buah Naga 🎅")
