@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 
 # Load the pre-trained model
-model = load_model(r'model_mobilenet.h5')  #a
+model = load_model(r'model_mobilenet.h5')  # Update with your model path
 class_names = ['Matang', 'Mentah']
 
 # Function to preprocess and classify image
@@ -43,12 +43,12 @@ def custom_progress_bar(confidence, color1, color2):
     """
     st.sidebar.markdown(progress_html, unsafe_allow_html=True)
 
-# Add snow animation background
-snow_animation = """
+# Add custom Christmas-themed background with snow animation
+christmas_background = """
 <style>
 body {
-    background: linear-gradient(to bottom, #1e3c72, #2a5298);
-    color: white;
+    background: linear-gradient(to bottom, #FF0000, #00FF00); /* Red to Green */
+    color: white; /* Text color */
     font-family: Arial, sans-serif;
 }
 
@@ -90,10 +90,11 @@ body {
 <div class="snowflake">❄</div>
 """
 
-st.markdown(snow_animation, unsafe_allow_html=True)
+# Display the background animation and snowflakes
+st.markdown(christmas_background, unsafe_allow_html=True)
 
 # Streamlit UI
-st.title("🎄 Prediksi Kematangan Buah Naga - xxxx 🎅") #4 digit npm
+st.title("🎄 Prediksi Kematangan Buah Naga - xxxx 🎅")  # Replace xxxx with your identifier
 
 # Upload multiple files in the main page
 uploaded_files = st.file_uploader("Unggah Gambar (Beberapa diperbolehkan)", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
@@ -111,8 +112,8 @@ if st.sidebar.button("Prediksi"):
             
             if label != "Error":
                 # Define colors for the bar and label
-                primary_color = "#007BFF"  # Blue for "Matang"
-                secondary_color = "#FF4136"  # Red for "Mentah"
+                primary_color = "#00FF00"  # Green for "Matang"
+                secondary_color = "#FF0000"  # Red for "Mentah"
                 label_color = primary_color if label == "Matang" else secondary_color
                 
                 # Display prediction results
