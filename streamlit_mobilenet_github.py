@@ -144,15 +144,6 @@ try:
 except FileNotFoundError:
     st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
 
-# Tambahkan copyright di bagian bawah
-copyright_html = """
-<div style="text-align: center; margin-top: 5px; font-size: 14px; color: #FFF; opacity: 0.8;">
-    © 2024 Atanasius Surya. All Rights Reserved.
-</div>
-"""
-st.markdown(copyright_html, unsafe_allow_html=True)
-
-
 title_html = """
 <div style="text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); font-size: 50px; font-weight: bold;">
     🎄 Prediksi Kematangan Buah Naga - XXXX 🎅
@@ -226,3 +217,11 @@ if uploaded_files:
     for uploaded_file in uploaded_files:
         image = Image.open(uploaded_file)
         st.image(image, caption=f"{uploaded_file.name}", use_column_width=True)
+        
+# Tambahkan copyright di bagian bawah
+copyright_html = """
+<div style="text-align: center; margin-top: 5px; font-size: 14px; color: #FFF; opacity: 0.8;">
+    © 2024 Atanasius Surya. All Rights Reserved.
+</div>
+"""
+st.markdown(copyright_html, unsafe_allow_html=True)
