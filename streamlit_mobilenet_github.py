@@ -35,10 +35,10 @@ def custom_progress_bar(confidence, color1, color2):
     progress_html = f"""
     <div style="border: 1px solid #ddd; border-radius: 5px; overflow: hidden; width: 100%; font-size: 14px;">
         <div style="width: {percentage1:.2f}%; background: {color1}; color: white; text-align: center; height: 24px; float: left;">
-            {percentage1:.2f}%
+            {percentage1:.2f}% Matang
         </div>
         <div style="width: {percentage2:.2f}%; background: {color2}; color: white; text-align: center; height: 24px; float: left;">
-            {percentage2:.2f}%
+            {percentage2:.2f}% Mentah
         </div>
     </div>
     """
@@ -126,9 +126,8 @@ try:
 except FileNotFoundError:
     st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
 
-
 # Streamlit UI
-st.title("🎄 Prediksi Kematangan Buah Naga - xxxx 🎅")  # Replace xxxx with your identifier
+st.title("🎄 Prediksi Kematangan Buah Naga 🎅")
 
 # Upload multiple files in the main page
 uploaded_files = st.file_uploader("Unggah Gambar (Beberapa diperbolehkan)", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
