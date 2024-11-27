@@ -61,6 +61,12 @@ christmas_background = """
     color: white;
 }
 
+/* Perbaiki warna teks judul agar tetap terlihat */
+h1, h2, h3, h4, h5, h6, p {
+    color: white; /* Warna default */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Efek bayangan */
+}
+
 /* Create snowflake animation */
 .snowflake {
     color: white;
