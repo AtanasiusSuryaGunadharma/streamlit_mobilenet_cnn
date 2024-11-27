@@ -111,18 +111,20 @@ h1, h2, h3, h4, h5, h6, p {
 # Display the background animation and snowflakes
 st.markdown(christmas_background, unsafe_allow_html=True)
 
-# HTML untuk lagu Natal
-natal_audio = """
-<div style="position: fixed; bottom: 10px; left: 10px;">
-    <audio controls autoplay loop>
-        <source src=r"natal_lagu.mp3" type="audio/mpeg">
+# Menambahkan audio autoplay menggunakan HTML
+try:
+    with open(r"natal_lagu.mp3", "rb") as audio_file:
+        audio_base64 = base64.b64encode(audio_file.read()).decode()
+
+    audio_html = f"""
+    <audio autoplay loop>
+        <source src="data:audio/mpeg;base64,{audio_base64}" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-</div>
-"""
-
-# Tambahkan elemen HTML ke Streamlitt
-st.markdown(natal_audio, unsafe_allow_html=True)
+    """
+    st.markdown(audio_html, unsafe_allow_html=True)
+except FileNotFoundError:
+    st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
 
 # Streamlit UI
 st.title("🎄 Prediksi Kematangan Buah Naga - xxxx 🎅")  # Replace xxxx with your identifier
