@@ -3,7 +3,6 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.models import load_model
 from PIL import Image
-import base64
 
 # Load the pre-trained model
 model = load_model(r'model_mobilenet.h5')  # Update with your model path
@@ -20,7 +19,7 @@ def classify_image(image_path):
         # Predict using the model
         predictions = model.predict(input_image_exp_dim)
         result = tf.nn.softmax(predictions[0])  # Apply softmax for probability
-        
+
         # Get class with highest confidence
         class_idx = np.argmax(result)
         confidence_scores = result.numpy()
@@ -35,10 +34,10 @@ def custom_progress_bar(confidence, color1, color2):
     progress_html = f"""
     <div style="border: 1px solid #ddd; border-radius: 5px; overflow: hidden; width: 100%; font-size: 14px;">
         <div style="width: {percentage1:.2f}%; background: {color1}; color: white; text-align: center; height: 24px; float: left;">
-            {percentage1:.2f}% Matang
+            {percentage1:.2f}%
         </div>
         <div style="width: {percentage2:.2f}%; background: {color2}; color: white; text-align: center; height: 24px; float: left;">
-            {percentage2:.2f}% Mentah
+            {percentage2:.2f}%
         </div>
     </div>
     """
@@ -111,23 +110,18 @@ h1, h2, h3, h4, h5, h6, p {
 # Display the background animation and snowflakes
 st.markdown(christmas_background, unsafe_allow_html=True)
 
-# Menambahkan audio autoplay menggunakan HTML
-try:
-    with open(r"natal_lagu.mp3", "rb") as audio_file:
-        audio_base64 = base64.b64encode(audio_file.read()).decode()
-
-    audio_html = f"""
-    <audio autoplay loop>
-        <source src="data:audio/mpeg;base64,{audio_base64}" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    """
-    st.markdown(audio_html, unsafe_allow_html=True)
-except FileNotFoundError:
-    st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
+# Menambahkan audio autoplay menggunakan Google Drive URL
+audio_url = "https://drive.google.com/uc?export=download&id=1rbVhCJyqMHhx0ZqG2LRDwBDIyZReCRp4"
+audio_html = f"""
+<audio autoplay loop>
+    <source src="{audio_url}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+"""
+st.markdown(audio_html, unsafe_allow_html=True)
 
 # Streamlit UI
-st.title("🎄 Prediksi Kematangan Buah Naga 🎅")
+st.title("🎄 Prediksi Kematangan Buah Naga - xxxx 🎅")  # Replace xxxx with your identifier
 
 # Upload multiple files in the main page
 uploaded_files = st.file_uploader("Unggah Gambar (Beberapa diperbolehkan)", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
