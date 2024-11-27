@@ -126,6 +126,17 @@ try:
 except FileNotFoundError:
     st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
 
+# Tambahkan copyright di bagian bawah
+copyright_html = """
+<div style="text-align: center; margin-top: 40px; font-size: 14px; color: #FFF; opacity: 0.8;">
+    © 2024 Atanasius Surya Gunadharma. All Rights Reserved.
+</div>
+"""
+st.markdown(copyright_html, unsafe_allow_html=True)
+
+# Streamlit UI
+st.title("🎄 Prediksi Kematangan Buah Naga -  XXXX 🎅") # 4 digit npm
+
 st.write("""
 <div style="background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;">
     <h2 style="color: #8B0000; font-family: 'Georgia', serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
@@ -139,17 +150,6 @@ st.write("""
     </p>
 </div>
 """, unsafe_allow_html=True)
-
-# Tambahkan copyright di bagian bawah
-copyright_html = """
-<div style="text-align: center; margin-top: 40px; font-size: 14px; color: #FFF; opacity: 0.8;">
-    © 2024 Atanasius Surya Gunadharma. All Rights Reserved.
-</div>
-"""
-st.markdown(copyright_html, unsafe_allow_html=True)
-
-# Streamlit UI
-st.title("🎄 Prediksi Kematangan Buah Naga 🎅")
 
 # Upload multiple files in the main page
 uploaded_files = st.file_uploader("Unggah Gambar (Beberapa diperbolehkan)", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
