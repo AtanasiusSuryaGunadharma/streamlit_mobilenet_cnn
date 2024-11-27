@@ -111,21 +111,6 @@ h1, h2, h3, h4, h5, h6, p {
 # Display the background animation and snowflakes
 st.markdown(christmas_background, unsafe_allow_html=True)
 
-# Menambahkan audio autoplay menggunakan HTML
-try:
-    with open(r"natal_lagu.mp3", "rb") as audio_file:
-        audio_base64 = base64.b64encode(audio_file.read()).decode()
-
-    audio_html = f"""
-    <audio autoplay loop>
-        <source src="data:audio/mpeg;base64,{audio_base64}" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    """
-    st.markdown(audio_html, unsafe_allow_html=True)
-except FileNotFoundError:
-    st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
-
 # Quotes Natal dengan tampilan menarik
 quotes_html = """
 <div style="background: #fff; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);">
@@ -152,6 +137,21 @@ copyright_html = """
 </div>
 """
 st.markdown(copyright_html, unsafe_allow_html=True)
+
+# Menambahkan audio autoplay menggunakan HTML
+try:
+    with open(r"natal_lagu.mp3", "rb") as audio_file:
+        audio_base64 = base64.b64encode(audio_file.read()).decode()
+
+    audio_html = f"""
+    <audio autoplay loop>
+        <source src="data:audio/mpeg;base64,{audio_base64}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    """
+    st.markdown(audio_html, unsafe_allow_html=True)
+except FileNotFoundError:
+    st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
 
 
 # Streamlit UI
