@@ -97,17 +97,6 @@ h1, h2, h3, h4, h5, h6, p {
     z-index: 10;
 }
 
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.center img {
-    width: 150px; 
-    height: 100px; 
-    object-fit: contain; 
-}
-
 @keyframes snow {
     0% { transform: translateY(0); }
     100% { transform: translateY(100vh); }
@@ -139,12 +128,6 @@ h1, h2, h3, h4, h5, h6, p {
 
 # Display the background animation and snowflakes
 st.markdown(christmas_background, unsafe_allow_html=True)
-
-st.markdown("""
-    <div class="center">
-        <img src="https://i.pinimg.com/originals/7f/1f/76/7f1f76ac29bc01ad318abbf0468b1062.gif" alt="Welcome Image"> 
-    </div>
-    """, christmas_background, unsafe_allow_html=True) 
 
 # Menambahkan audio autoplay menggunakan HTML
 try:
