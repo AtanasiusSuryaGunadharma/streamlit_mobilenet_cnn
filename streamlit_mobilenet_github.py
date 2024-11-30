@@ -161,7 +161,7 @@ st.markdown(christmas_background, unsafe_allow_html=True)
 
 # Menambahkan audio autoplay menggunakan HTML
 try:
-    with open(r"natal_lagu.mp3", "rb") as audio_file:
+    with open(r"natal_lagu3.mp3", "rb") as audio_file:
         audio_base64 = base64.b64encode(audio_file.read()).decode()
 
     audio_html = f"""
@@ -172,7 +172,7 @@ try:
     """
     st.markdown(audio_html, unsafe_allow_html=True)
 except FileNotFoundError:
-    st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
+    st.error("File audio tidak ditemukan. Pastikan 'natal_lagu3.mp3' sudah ada di direktori project.")
 
 title_html = """
 <div style="text-align: center; color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); font-size: 50px; font-weight: bold;">
