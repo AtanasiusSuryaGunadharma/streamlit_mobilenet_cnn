@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_extras.let_it_rain import rain
 import tensorflow as tf
 import numpy as np
 from tensorflow.keras.models import load_model
@@ -61,6 +62,13 @@ def get_christmas_countdown():
     minutes, seconds = divmod(remainder, 60)
     
     return days, hours, minutes, seconds
+
+# Function to apply snowfall effect
+def run_snow_animation():
+    rain(emoji="❄️", font_size=20, falling_speed=10, animation_length="infinite")
+
+# Run snowfall animation
+run_snow_animation()
 
 # Add custom Christmas-themed background with snow animation
 christmas_background = """
