@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 /* Create snowflake animation */
 .snowflake {
-    color: blue;
+    color: #1caeed;
     font-size: 1.5em;
     position: absolute;
     top: -10%;
