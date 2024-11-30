@@ -176,6 +176,7 @@ quotes_html = f"""
 # Display quotes on the main page
 st.markdown(quotes_html, unsafe_allow_html=True)
 
+st.sidebar.image(r"treeChristmas.png")
 # Sidebar for prediction button and results
 if st.sidebar.button("Prediksi"):
     if uploaded_files:
