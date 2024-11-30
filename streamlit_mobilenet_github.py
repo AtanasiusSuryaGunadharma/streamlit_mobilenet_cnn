@@ -256,8 +256,8 @@ with col2:
                         st.sidebar.write("---")
                     else:
                         st.sidebar.error(f"Kesalahan saat memproses gambar {uploaded_file.name}: {confidence}")
-            else:
-                st.sidebar.error("Silakan unggah setidaknya satu gambar untuk diprediksi.")
+        else:
+            st.sidebar.error("Silakan unggah setidaknya satu gambar untuk diprediksi.")
 
 # Preview images in the main page
 if uploaded_files:
