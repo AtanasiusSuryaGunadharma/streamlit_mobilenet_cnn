@@ -177,40 +177,54 @@ quotes_html = f"""
 st.markdown(quotes_html, unsafe_allow_html=True)
 
 st.sidebar.image(r"treeChristmas.png")
-# Sidebar for prediction button and results
-if st.sidebar.button("Prediksi"):
-    if uploaded_files:
-        st.sidebar.write("### 🎁 Hasil Prediksi")
-        for uploaded_file in uploaded_files:
-            with open(uploaded_file.name, "wb") as f:
-                f.write(uploaded_file.getbuffer())
+# Style for the prediction button
+style_button = """
+<style>
+.button-prediksi {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+</style>
+"""
+st.markdown(style_button, unsafe_allow_html=True)
 
-            # Perform prediction
-            label, confidence = classify_image(uploaded_file.name)
-            
-            if label != "Error":
-                # Define colors for the bar and label
-                primary_color = "#00FF00"  # Green for "Matang"
-                secondary_color = "#FF0000"  # Red for "Mentah"
-                label_color = primary_color if label == "Matang" else secondary_color
+# Sidebar for prediction button and results
+col1, col2, col3 = st.sidebar.columns([1, 1, 1])
+with col2:
+    if st.button("Prediksi"):
+        if uploaded_files:
+            st.sidebar.write("### 🎁 Hasil Prediksi")
+            for uploaded_file in uploaded_files:
+                with open(uploaded_file.name, "wb") as f:
+                    f.write(uploaded_file.getbuffer())
+
+                # Perform prediction
+                label, confidence = classify_image(uploaded_file.name)
                 
-                # Display prediction results
-                st.sidebar.write(f"**Nama File:** {uploaded_file.name}")
-                st.sidebar.markdown(f"<h4 style='color: {label_color};'>Prediksi: {label}</h4>", unsafe_allow_html=True)
-                
-                # Display confidence scores
-                st.sidebar.write("**Confidence:**")
-                for i, class_name in enumerate(class_names):
-                    st.sidebar.write(f"- {class_name}: {confidence[i] * 100:.2f}%")
-                
-                # Display custom progress bar
-                custom_progress_bar(confidence, primary_color, secondary_color)
-                
-                st.sidebar.write("---")
-            else:
-                st.sidebar.error(f"Kesalahan saat memproses gambar {uploaded_file.name}: {confidence}")
-    else:
-        st.sidebar.error("Silakan unggah setidaknya satu gambar untuk diprediksi.")
+                if label != "Error":
+                    # Define colors for the bar and label
+                    primary_color = "#00FF00"  # Green for "Matang"
+                    secondary_color = "#FF0000"  # Red for "Mentah"
+                    label_color = primary_color if label == "Matang" else secondary_color
+                    
+                    # Display prediction results
+                    st.sidebar.write(f"**Nama File:** {uploaded_file.name}")
+                    st.sidebar.markdown(f"<h4 style='color: {label_color};'>Prediksi: {label}</h4>", unsafe_allow_html=True)
+                    
+                    # Display confidence scores
+                    st.sidebar.write("**Confidence:**")
+                    for i, class_name in enumerate(class_names):
+                        st.sidebar.write(f"- {class_name}: {confidence[i] * 100:.2f}%")
+                    
+                    # Display custom progress bar
+                    custom_progress_bar(confidence, primary_color, secondary_color)
+                    
+                    st.sidebar.write("---")
+                else:
+                    st.sidebar.error(f"Kesalahan saat memproses gambar {uploaded_file.name}: {confidence}")
+        else:
+            st.sidebar.error("Silakan unggah setidaknya satu gambar untuk diprediksi.")
 
 # Preview images in the main page
 if uploaded_files:
