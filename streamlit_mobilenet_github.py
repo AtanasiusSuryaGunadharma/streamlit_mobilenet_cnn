@@ -7,6 +7,7 @@ from PIL import Image
 from datetime import datetime, timedelta
 import time
 import base64
+from pathlib import Path
 
 # Load the pre-trained model
 model = load_model(r'model_mobilenet.h5')  # Update with your model path
@@ -63,6 +64,23 @@ def get_christmas_countdown():
     
     return days, hours, minutes, seconds
 
+def get_base64(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def set_background(png_file):
+    bin_str = get_base64(png_file)
+    page_bg_img = '''
+    <style>
+    .stApp {
+    background-image: url("data:image/png;base64,%s");
+    background-size: cover;
+    }
+    </style>
+    ''' % bin_str
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+    
 # Function to apply snowfall effect
 def run_snow_animation():
     rain(emoji="❄️", font_size=20, falling_speed=10, animation_length="infinite")
@@ -71,17 +89,20 @@ st.snow()
 # Run snowfall animation
 run_snow_animation()
 
+# Change Background Streamlit
+set_background(r"background1.gif")
+
 # Add custom Christmas-themed background with snow animation
 christmas_background = """
 <style>
 /* Set full-page background */
-[data-testid="stAppViewContainer"] {
-    background: linear-gradient(to bottom, #FF0000, #00FF00); /* Red to Green */
-    background-size: cover;
-    background-attachment: fixed;
-    color: white; /* Text color */
-    font-family: Arial, sans-serif;
-}
+# [data-testid="stAppViewContainer"] {
+#     background: linear-gradient(to bottom, #FF0000, #00FF00); /* Red to Green */
+#     background-size: cover;
+#     background-attachment: fixed;
+#     color: white; /* Text color */
+#     font-family: Arial, sans-serif;
+# }
 
 /* Hide default Streamlit styling for a cleaner look */
 [data-testid="stSidebar"] {
@@ -91,7 +112,7 @@ christmas_background = """
 
 /* Perbaiki warna teks judul agar tetap terlihat */
 h1, h2, h3, h4, h5, h6, p {
-    color: white; /* Warna default */
+    color: blue; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Efek bayangan */
 }
 
@@ -154,7 +175,7 @@ except FileNotFoundError:
     st.error("File audio tidak ditemukan. Pastikan 'natal_lagu.mp3' sudah ada di direktori project.")
 
 title_html = """
-<div style="text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); font-size: 50px; font-weight: bold;">
+<div style="text-align: center; color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); font-size: 50px; font-weight: bold;">
     🎄 Prediksi Kematangan Buah Naga - XXXX 🎅
 </div>
 """
@@ -186,6 +207,7 @@ quotes_html = f"""
 st.markdown(quotes_html, unsafe_allow_html=True)
 
 st.sidebar.image(r"treeChristmas.png")
+
 # Style for the prediction button
 style_button = """
 <style>
