@@ -106,8 +106,8 @@ christmas_background = """
 
 /* Hide default Streamlit styling for a cleaner look */
 [data-testid="stSidebar"] {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
 }
 
 /* Perbaiki warna teks judul agar tetap terlihat */
