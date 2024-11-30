@@ -67,6 +67,7 @@ def get_christmas_countdown():
 def run_snow_animation():
     rain(emoji="❄️", font_size=20, falling_speed=10, animation_length="infinite")
 
+st.snow()
 # Run snowfall animation
 run_snow_animation()
 
@@ -201,6 +202,7 @@ st.markdown(style_button, unsafe_allow_html=True)
 col1, col2, col3 = st.sidebar.columns([1, 1, 1])
 with col2:
     if st.button("Prediksi"):
+        st.snow()
         if uploaded_files:
             st.sidebar.write("### 🎁 Hasil Prediksi")
             for uploaded_file in uploaded_files:
