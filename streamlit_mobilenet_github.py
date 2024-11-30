@@ -231,7 +231,7 @@ with col2:
                 for uploaded_file in uploaded_files:
                     with open(uploaded_file.name, "wb") as f:
                         f.write(uploaded_file.getbuffer())
-    
+
                     # Perform prediction
                     label, confidence = classify_image(uploaded_file.name)
                     
