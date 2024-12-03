@@ -81,6 +81,20 @@ def set_background(png_file):
     </style>
     ''' % bin_str
     st.markdown(page_bg_img, unsafe_allow_html=True)
+
+def Social(sidebarPos = False,heading = None):
+    
+    if heading != None:
+        st.title(f":rainbow[{heading}]")
+        
+    social_media_links = [
+            "https://www.linkedin.com/in/sushovan-saha-29a00a113",
+            "https://github.com/ambideXtrous9",
+            "https://medium.com/@sushovansaha95"]
+
+    social_media_icons = SocialMediaIcons(social_media_links) 
+
+    social_media_icons.render(sidebar=sidebarPos, justify_content="center")
     
 # Function to apply snowfall effect
 def run_snow_animation():
@@ -225,6 +239,7 @@ st.markdown(style_button, unsafe_allow_html=True)
 col1, col2, col3 = st.sidebar.columns([1, 1, 1])
 with col2:
     if st.button("Prediksi"):
+        Social(sidebarPos=True)
         st.snow()
         if uploaded_files:
             st.sidebar.write("### 🎁 Hasil Prediksi")
@@ -275,16 +290,3 @@ copyright_html = """
 """
 st.markdown(copyright_html, unsafe_allow_html=True)
 
-def Social(sidebarPos = False,heading = None):
-    
-    if heading != None:
-        st.title(f":rainbow[{heading}]")
-        
-    social_media_links = [
-            "https://www.linkedin.com/in/sushovan-saha-29a00a113",
-            "https://github.com/ambideXtrous9",
-            "https://medium.com/@sushovansaha95"]
-
-    social_media_icons = SocialMediaIcons(social_media_links) 
-
-    social_media_icons.render(sidebar=sidebarPos, justify_content="center")
