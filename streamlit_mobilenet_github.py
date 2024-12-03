@@ -232,7 +232,7 @@ style_button = """
 <style>
 .button-prediksi {
     display: block;
-    margin: 0 auto;
+    margin-top: 5px;
     text-align: center;
 }
 </style>
