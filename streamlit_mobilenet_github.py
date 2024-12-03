@@ -88,9 +88,9 @@ def Social(sidebarPos = False,heading = None):
         st.title(f":rainbow[{heading}]")
         
     social_media_links = [
-            "https://www.linkedin.com/in/sushovan-saha-29a00a113",
-            "https://github.com/ambideXtrous9",
-            "https://medium.com/@sushovansaha95"]
+            "https://www.linkedin.com/in/atanasius-surya-656a91207",
+            "https://github.com/AtanasiusSuryaGunadharma",
+            "https://www.instagram.com/ata.sur_"]
 
     social_media_icons = SocialMediaIcons(social_media_links) 
 
@@ -238,8 +238,8 @@ st.markdown(style_button, unsafe_allow_html=True)
 # Sidebar for prediction button and results
 col1, col2, col3 = st.sidebar.columns([1, 1, 1])
 with col2:
+    Social(sidebarPos=True)
     if st.button("Prediksi"):
-        Social(sidebarPos=True)
         st.snow()
         if uploaded_files:
             st.sidebar.write("### 🎁 Hasil Prediksi")
