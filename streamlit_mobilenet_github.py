@@ -223,6 +223,10 @@ st.markdown(quotes_html, unsafe_allow_html=True)
 
 st.sidebar.image(r"treeChristmas.png")
 
+# Menampilkan Social Media di Sidebar
+with st.sidebar:
+    Social(sidebarPos=True)
+
 # Style for the prediction button
 style_button = """
 <style>
@@ -238,7 +242,6 @@ st.markdown(style_button, unsafe_allow_html=True)
 # Sidebar for prediction button and results
 col1, col2, col3 = st.sidebar.columns([1, 1, 1])
 with col2:
-    Social(sidebarPos=True)
     if st.button("Prediksi"):
         st.snow()
         if uploaded_files:
