@@ -176,7 +176,7 @@ st.markdown(christmas_background, unsafe_allow_html=True)
 
 # Menambahkan audio autoplay menggunakan HTML
 try:
-    with open(r"natal_lagu3.mp3", "rb") as audio_file:
+    with open(r"natal_lagu5.mp3", "rb") as audio_file:
         audio_base64 = base64.b64encode(audio_file.read()).decode()
 
     audio_html = f"""
