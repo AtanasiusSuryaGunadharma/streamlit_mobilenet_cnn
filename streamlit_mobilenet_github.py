@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 import time
 import base64
 from pathlib import Path
+from st_social_media_links import SocialMediaIcons
 
 # Load the pre-trained model
 model = load_model(r'model_mobilenet.h5')  # Update with your model path
