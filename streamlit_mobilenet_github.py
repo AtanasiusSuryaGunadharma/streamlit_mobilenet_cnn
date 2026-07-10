@@ -11,7 +11,7 @@ from pathlib import Path
 from st_social_media_links import SocialMediaIcons
 
 # Load the pre-trained model
-model = load_model(r'model_mobilenet.h5')  # Update with your model path
+model = load_model(r'model_mobilenet.keras')  # Update with your model path
 class_names = ['Matang', 'Mentah']
 
 # Function to preprocess and classify image
